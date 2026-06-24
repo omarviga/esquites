@@ -113,12 +113,16 @@ function HistorialPage() {
       const rows = (sales ?? []).map((s: any) => ({
         id: s.id,
         folio: s.folio,
-        date: s.created_at,
-        cashier: "Cajero",
-        customer: null as string | null,
+        created_at: s.created_at,
+        cashier_name: "Cajero",
+        subtotal: Number(s.subtotal ?? 0),
+        tax: Number(s.tax ?? 0),
         total: Number(s.total ?? 0),
-        payment: s.payment_method ?? "efectivo",
-        status: s.cancelled ? "Cancelada" : "Completada",
+        payment_method: s.payment_method ?? "efectivo",
+        cash_received: s.cash_received,
+        change_amount: s.change_amount,
+        cancelled: s.cancelled,
+        customer_id: s.customer_id,
       }));
 
       return { rows, total: count ?? 0 };
