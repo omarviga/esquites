@@ -654,6 +654,8 @@ function CloseCashDialog({
       setClosedDiff(res.difference ?? diff);
       toast.success(`Caja cerrada. Diferencia: ${fmt(res.difference ?? diff)}`);
       onDone();
+      // Auto-navigate to print the corte
+      setTimeout(() => navigate({ to: `/corte/${res.registerId}` }), 500);
     } catch (e: any) {
       toast.error(e.message);
     } finally {
